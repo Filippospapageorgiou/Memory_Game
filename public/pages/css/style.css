@@ -1,0 +1,233 @@
+:root {
+  --bg: #fafafa;
+  --font: "Archivo", sans-serif;
+  --font-display: "Archivo Narrow", sans-serif;
+  --hotpink: #e94057;
+  --orange: #f27121;
+  --gradient: linear-gradient(35deg, var(--orange), var(--hotpink));
+}
+
+body {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  min-height: 100vh;
+  background: var(--bg);
+  font-family: var(--font);
+  background-color: transparent;
+}
+
+.header {
+  padding: 0.5rem 2rem;
+  background: white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items:self-start;
+}
+
+.header-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.header-num{
+  font-family: var(--font-display);
+  color: var(--hotpink);
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 0.9;
+}
+
+.player-info {
+  display: flex;
+  position: left;
+  padding: auto;
+  margin-top: 10px;
+  margin-right: 2rem;
+  font-family: var(--font-display);
+  color: var(--hotpink);
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 0.9;
+}
+
+
+
+.logoutLink {
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  margin-right: 15px;
+  font-size: 1.5rem;
+  color: var(--bg);
+  background-color: var(--hotpink);
+  border-radius: 25px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.logoutLink:hover {
+  color: var(--orange);
+}
+
+
+.counters {
+  display: flex;
+}
+
+.counter-item {
+  position: left;
+  margin-right: 2rem;
+}
+
+
+main {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  max-width: 30rem;
+  margin: auto;
+}
+
+.card {
+  width: 6rem;
+  height: 6rem;
+  margin: 0.5rem;
+  border-radius: 0.3em;
+  background-image: var(--gradient);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: 0.3s;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.card__content{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: rotateY(-180deg);
+  backface-visibility: hidden;
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  padding-top: 0.4rem;
+}
+
+.card_content::selection {
+  background: transparent;
+}
+
+
+@keyframes accurate {
+  from {
+    transform: rotateY(-180deg) scale3d(1, 1, 1);
+    opacity: 1;
+  }
+
+  25% {
+    transform: rotateY(-180deg) scale3d(1.1, 1.1, 1.1);
+    opacity: 1;
+  }
+
+  to {
+    transform: rotateY(-180deg) scale3d(1, 1, 1);
+    opacity: 0;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.error {
+  animation: shake 0.5s ease-in-out;
+}
+
+.accurate {
+  pointer-events: none;
+}
+
+.accurate .card__content {
+  animation: accurate 1.3s ease-in-out forwards;
+}
+
+.discover {
+  transform: rotateY(-180deg);
+}
+
+.feedback {
+  display: none; /* Start hidden, show via JS */
+  position: absolute;
+  background: var(--gradient);
+  color: var(--bg);
+  border-radius: 8px;
+  width: 500px;
+  height: auto;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensure it sits above other content */
+}
+
+.feedback.visible {
+  display: block; /* Show when it's time */
+}
+
+.restart {
+  font-size: 18px;
+  background: var(--gradient);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 50%;
+  font-family: var(--font-display);
+  border-radius: 4px;
+  transition: background 0.4s all ease-in;
+}
+
+.restart:hover {
+  background: var(--hotpink);
+}
+
+
+
+
